@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.4",
-    "react": "^18",
-    "react-dom": "^18",
+    "gnpm": "^0.0.1",
+    "install": "^0.13.0",
+    "next": "^14.2.5",
+    "next.js": "^1.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   },
