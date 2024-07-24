@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
-// Asumiendo que tus productos se encuentran en la misma base de datos y servidor
+
 export async function getServerSideProps() {
-  // Cambia la URL por la ruta correcta de tu API
+  
   const res = await fetch('http://localhost:3000/api/products');
   const productos = await res.json();
 
