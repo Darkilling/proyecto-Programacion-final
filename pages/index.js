@@ -30,7 +30,7 @@ export default function Home({ productos }) {
                   <span className="text-sm">{producto.category}</span>
                   <span className="text-sm text-gray-300">{producto.description}</span>
                   <span className="text-sm text-gray-500">{producto.location}</span>
-                  <img src={producto.image} alt={producto.name} width={600} height={400}  className="mb-4 rounded-lg" />
+                  <img src={`/juegos/${producto.image}`} alt={producto.name} width={600} height={400}  className="mb-4 rounded-lg" />
                 </div>
               </Link>
             </li>
