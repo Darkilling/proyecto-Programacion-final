@@ -27,7 +27,7 @@ export default function Header() {
       }
 
       const data = await response.json();
-      console.log('Inicio de sesión exitoso', data);
+      console.log('Inicio de sesión correcto', data);
       setIsAuthenticated(true);
       setUserDisplayName(username);
       setUsername('');
@@ -43,7 +43,7 @@ export default function Header() {
     setIsAuthenticated(false);
     setUserDisplayName('');
     setMessage('');
-    // Aquí puedes limpiar también el token de sesión o realizar otras acciones de limpieza
+    
   };
 
   return (
@@ -52,34 +52,36 @@ export default function Header() {
         <>
           <div className="mb-32 grid text-center lg:max-w-12xl lg:w-full lg:mb-0 lg:grid-cols-1 lg:text-center">
             <h1 className="text-4xl font-bold">Bienvenido a INACAPludi</h1>
-            <p className="text-xl">Inicia sesión para encontrar los mejores productos al mejor precio.</p>
+            <p className="text-xl">Aquí encontrarás los mejores productos Para Jugar con tus amigos o compañeros</p>
           </div>
-          <form onSubmit={handleLogin} className="flex items-center justify-center mx-auto">
+          <form onSubmit={handleLogin} className="block text-gray-700 text-sm font-bold mb-2 ">
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Nombre de Usuario"
-              className="m-2 text-black"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Contraseña"
-              className="m-2 text-black"
+              placeholder="***************"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
-            <button type="submit" className="m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Iniciar Sesión
-            </button>
+        <div className="flex justify-center">
+        <button type="submit" className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Iniciar Sesión
+        </button>
+</div>
           </form>
           {message && <p className="mt-4 text-red-500">{message}</p>}
         </>
       ) : (
         <div className="flex items-center justify-center mx-auto">
-          <span className="m-2 text-white">Hola, {userDisplayName}</span>
+          <span className="m-2 text-white">Bienvenido a Ludoteca, {userDisplayName}</span>
           <button onClick={handleLogout} className="m-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Cerrar Sesión
           </button>
