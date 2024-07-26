@@ -153,7 +153,7 @@ export default function Producto({ product, onSubmit, onReset }){
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="timebox" className="mb-2">Tiempo de entrega:</label>
+        <label htmlFor="timebox" className="mb-2">Tiempo</label>
         <input
           id="timebox"
           type="text"

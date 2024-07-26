@@ -5,7 +5,6 @@ export default function Header() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userDisplayName, setUserDisplayName] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,71 +21,59 @@ export default function Header() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `Error: ${response.status}`);
+        throw new Error(`Error: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log('Inicio de sesión correcto', data);
+      console.log('Inicio de sesión exitoso', data);
       setIsAuthenticated(true);
-      setUserDisplayName(username);
+      setUserDisplayName(username); 
       setUsername('');
       setPassword('');
-      setMessage('');
     } catch (error) {
       console.error('Error al iniciar sesión', error);
-      setMessage(error.message);
     }
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setUserDisplayName('');
-    setMessage('');
-    
+    // Aquí puedes limpiar también el token de sesión o realizar otras acciones de limpieza
   };
 
   return (
-    <main>
-      {!isAuthenticated ? (
-        <>
-          <div className="mb-32 grid text-center lg:max-w-12xl lg:w-full lg:mb-0 lg:grid-cols-1 lg:text-center">
-            <h1 className="text-4xl font-bold">Bienvenido a INACAPludi</h1>
-            <p className="text-xl">Aquí encontrarás los mejores productos Para Jugar con tus amigos o compañeros</p>
-          </div>
-          <form onSubmit={handleLogin} className="block text-gray-700 text-sm font-bold mb-2 ">
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Nombre de Usuario"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="***************"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-        <div className="flex justify-center">
-        <button type="submit" className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Iniciar Sesión
-        </button>
-</div>
-          </form>
-          {message && <p className="mt-4 text-red-500">{message}</p>}
-        </>
-      ) : (
-        <div className="flex items-center justify-center mx-auto">
-          <span className="m-2 text-white">Bienvenido a Ludoteca, {userDisplayName}</span>
-          <button onClick={handleLogout} className="m-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+    <header className="bg-grey shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      <h1 className="bg-grey font-bold text-white">INACAPludi</h1>
+      {isAuthenticated ? (
+        <div className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <span className=" text-white mr-4">Bienvenido a Ludoteca, {userDisplayName}</span>
+          <button onClick={handleLogout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Cerrar Sesión
           </button>
         </div>
+      ) : (
+        <form onSubmit={handleLogin} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Nombre de Usuario"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Contraseña"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+          <button type="submit" className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Iniciar Sesión
+          </button>
+        </form>
       )}
-    </main>
+    </header>
   );
 }
