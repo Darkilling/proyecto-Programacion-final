@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import backgroundImage from '../public/no1.jpeg'; // Asegúrate de ajustar la ruta a tu imagen
 
 export default function Header() {
   const [username, setUsername] = useState('');
@@ -42,7 +43,14 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-grey shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    <header
+      className="bg-grey shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <h1 className="bg-grey font-bold text-white">INACAPludi</h1>
       {isAuthenticated ? (
         <div className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -77,3 +85,4 @@ export default function Header() {
     </header>
   );
 }
+
