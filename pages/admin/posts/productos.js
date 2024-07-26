@@ -90,7 +90,7 @@ export default function Producto({ product, onSubmit, onReset }){
           type="text"
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
       <div className="flex flex-col">
@@ -100,7 +100,7 @@ export default function Producto({ product, onSubmit, onReset }){
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full px-4 py-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
       <div className="flex flex-col">
@@ -110,7 +110,7 @@ export default function Producto({ product, onSubmit, onReset }){
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
       <div className="flex flex-col">
@@ -119,8 +119,8 @@ export default function Producto({ product, onSubmit, onReset }){
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full px-4 py-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
       </div>
       <div className="flex flex-col">
         <label htmlFor="location" className="mb-2">Ubicación:</label>
@@ -129,7 +129,7 @@ export default function Producto({ product, onSubmit, onReset }){
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
       <div className="flex flex-col">
@@ -139,7 +139,7 @@ export default function Producto({ product, onSubmit, onReset }){
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
       <div className="flex flex-col">
@@ -149,7 +149,7 @@ export default function Producto({ product, onSubmit, onReset }){
           type="number"
           value={availability}
           onChange={(e) => setAvailability(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
       <div className="flex flex-col">
@@ -159,8 +159,9 @@ export default function Producto({ product, onSubmit, onReset }){
           type="text"
           value={timebox}
           onChange={(e) => setTimebox(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 bg-purple-500 text-white border border-purple-500 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
+        <div/>
       </div>
       <div className="flex justify-end space-x-4">
         <button type="submit" className="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Guardar</button>

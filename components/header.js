@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import backgroundImage from '../public/no1.jpeg'; // Asegúrate de ajustar la ruta a tu imagen
+import backgroundImage from '../public/background/no1.jpeg'; //  ajustar la ruta a tu imagen
 
 export default function Header() {
   const [username, setUsername] = useState('');
@@ -46,15 +46,20 @@ export default function Header() {
     <header
       className="bg-grey shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url('/background/no1.jpeg')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: '600% 70%',
+        minHeight: '500px', // Asegura que el header cubra toda la altura de la ventana
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'left',
       }}
     >
-      <h1 className="bg-grey font-bold text-white">INACAPludi</h1>
+      <h1 className="bg-grey font-times text-black text-4xl font-bold">INACAPludi</h1> {/* Agrandar y hacer más grueso el texto del encabezado */}
       {isAuthenticated ? (
         <div className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-          <span className=" text-white mr-4">Bienvenido a Ludoteca, {userDisplayName}</span>
+          <span className="background-red text-black text-2xl font-bold mr-6">Bienvenido a Ludoteca, {userDisplayName}</span> {/* Agrandar y hacer más grueso el texto de bienvenida */}
           <button onClick={handleLogout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Cerrar Sesión
           </button>
@@ -85,4 +90,3 @@ export default function Header() {
     </header>
   );
 }
-

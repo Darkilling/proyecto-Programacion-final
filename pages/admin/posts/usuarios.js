@@ -79,16 +79,16 @@ export default function Usuarios({ post, onSubmit, onReset }) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Usuario"
-                className="m-2 text-black w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 bg-green-500 text-white border border-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
             />
             <br />
             <input
-                type="password"
+                type="password "
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Contraseña"
-                className="m-2 text-black w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 bg-green-500 text-white border border-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
             />
             <br />
@@ -96,7 +96,7 @@ export default function Usuarios({ post, onSubmit, onReset }) {
                 value={realName}
                 onChange={(e) => setRealName(e.target.value)}
                 placeholder="Nombre"
-                className="m-2 text-black w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 bg-green-500 text-white border border-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
             />
             <br />
@@ -104,8 +104,7 @@ export default function Usuarios({ post, onSubmit, onReset }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                className="m-2 text-black w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                required
+                className="w-full px-4 py-2 bg-green-500 text-white border border-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             <br />
             <button type="submit" className="box-border m-2 w-2/5 px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
