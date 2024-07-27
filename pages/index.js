@@ -16,7 +16,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ productos }) {
-  const { addToCart, cartItems } = useCart(); // Usar el contexto del carrito de compras y obtener los items actuales
+  const { addToCart, cartItems, removeFromCart } = useCart(); // Usar el contexto del carrito de compras 
   const { isAuthenticated } = useAuth(); // Usar el contexto de autenticación
 
 
