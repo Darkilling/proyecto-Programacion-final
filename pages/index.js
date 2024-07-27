@@ -16,59 +16,64 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ productos }) {
-  const { addToCart, cartItems, removeFromCart } = useCart(); // Usar el contexto del carrito de compras 
+  const { addToCart, cartItems, removeFromCart, handleQuantityChange  } = useCart(); // Usar el contexto del carrito de compras 
   const { isAuthenticated } = useAuth(); // Usar el contexto de autenticación
 
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Header />
-        <div className="border p-4 rounded-lg">
+    <Header />
+    <div className="flex w-full justify-between mt-8">
+        <div className="w-2/3 border p-4 rounded-lg">
           <h1>Productos</h1>
           <ul className="shadow-lg rounded-lg p-4">
             {productos.map((producto) => (
               <li key={producto.id} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
                 <Link href={`/productos/${producto.id}`} passHref>
                   <div className="flex flex-col items-start cursor-pointer text-center">
-                    <span className="text-sm text-gray-300">Nombre:{producto.name}</span>
-                    <span className="text-sm text-gray-300">Codigo:{producto.code}</span>
-                    <span className="text-sm text-gray-300">Categoria:{producto.category}</span>
-                    <span className="text-sm text-gray-300">Descripcion:{producto.description}</span>
-                    <span className="text-sm text-gray-300">Lugar:{producto.location}</span>
-                    <span className="text-sm text-gray-300">Disponibilidad:{producto.availability}</span>
-                    <img src={`/juegos/${producto.image}`} alt={producto.name} width={600} height={400}  className="mb-4 rounded-lg" />
+                    <span className="text-sm text-gray-300">Nombre: {producto.name}</span>
+                    <span className="text-sm text-gray-300">Codigo: {producto.code}</span>
+                    <span className="text-sm text-gray-300">Categoria: {producto.category}</span>
+                    <span className="text-sm text-gray-300">Descripcion: {producto.description}</span>
+                    <span className="text-sm text-gray-300">Lugar: {producto.location}</span>
+                    <span className="text-sm text-gray-300">Disponibilidad: {producto.availability}</span>
+                    <img src={`/juegos/${producto.image}`} alt={producto.name} width={600} height={400} className="mb-4 rounded-lg" />
                   </div>
                 </Link>
-                
-                  <button
-                    onClick={() => addToCart(producto)}
-                    className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Agregar al Carrito
-                  </button>
-                
+                <button
+                  onClick={() => addToCart(producto)}
+                  className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  Agregar al Carrito
+                </button>
               </li>
             ))}
           </ul>
         </div>
-
-        <div className="flex w-full justify-between mt-8">
-        <div className="w-1/3 h-full bg-black shadow-lg p-6 overflow-y-auto">
-              <h2 className="text-2xl font-bold mb-4 text-grey-400">Carrito</h2>
-              <ul className="list-disc pl-5">
-                {cartItems.map((item) => (
-                  <li key={item.id} className="text-lg text-grey-400 flex justify-between items-center">
-                    {item.name} - Cantidad: {item.quantity}
-                    <button 
-                      className="ml-4 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700 transition-colors"
-                      onClick={() => removeFromCart(item.id)}>
-                      Eliminar
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+  
+        <div className="w-1/3 h-full bg-black shadow-lg p-6 overflow-y-auto ml-4">
+          <h2 className="text-2xl font-bold mb-4 text-grey-400">Carrito</h2>
+          <ul className="list-disc pl-5">
+            {cartItems.map((item) => (
+              <li key={item.id} className="text-lg text-grey-400 flex justify-between items-center">
+                {item.name} - Cantidad: {item.quantity}
+                <input
+                  type="number"
+                  value={item.quantity}
+                  min="1"
+                  className="ml-2 w-16 p-1 border rounded"
+                  onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                />
+                <button
+                  className="ml-4 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700 transition-colors"
+                  onClick={() => removeFromCart(item.id)}>
+                  Eliminar
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <Footer />
-    </main>
-  );
+    </main> 
+);
 }
