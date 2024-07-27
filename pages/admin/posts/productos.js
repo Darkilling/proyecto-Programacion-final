@@ -170,4 +170,3 @@ export default function Producto({ product, onSubmit, onReset }){
     </form>
   );
 };
-

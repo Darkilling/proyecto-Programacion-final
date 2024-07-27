@@ -1,15 +1,33 @@
-// context/AuthContext.js
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
-
-// Asegúrate de exportar también el proveedor del contexto si es necesario
 export const AuthProvider = ({ children }) => {
-  // Lógica para manejar la autenticación
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  return <AuthContext.Provider value={{ /* valores que quieres proveer */ }}>
-    {children}
-  </AuthContext.Provider>;
-}
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Aquí deberías agregar la lógica de autenticación real
+    if (username === 'usuario' && password === 'contraseña') {
+      setIsAuthenticated(true);
+    } else {
+      alert('Nombre de usuario o contraseña incorrectos');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setUsername('');
+    setPassword('');
+  };
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, handleLogin, handleLogout, username, setUsername, password, setPassword }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);

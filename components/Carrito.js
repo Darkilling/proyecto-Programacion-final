@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
-
+import { isAuthenticated } from '../components/autorizacion';
 const CartContext = createContext();
+
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+
+  
 
   const addToCart = (producto) => {
     setCartItems((prevItems) => {
@@ -43,7 +46,7 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  
+
   const removeFromCart = (productoId) => {
     setCartItems((prevItems) => {
       const itemExists = prevItems.find((item) => item.id === productoId);

@@ -16,8 +16,8 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ productos }) {
-  const { addToCart, cartItems, removeFromCart, handleQuantityChange  } = useCart(); // Usar el contexto del carrito de compras 
-  const { isAuthenticated } = useAuth(); // Usar el contexto de autenticación
+  const { addToCart, cartItems, removeFromCart, handleQuantityChange  } = useCart(); // Usar el contexto del carrito de compras
+   
 
 
   return (
@@ -50,23 +50,24 @@ export default function Home({ productos }) {
           </ul>
         </div>
   
-        <div className="w-1/3 h-full bg-black shadow-lg p-6 overflow-y-auto ml-4">
-          <h2 className="text-2xl font-bold mb-4 text-grey-400">Carrito</h2>
-          <ul className="list-disc pl-5">
-            {cartItems.map((item) => (
-              <li key={item.id} className="text-lg text-grey-400 flex justify-between items-center">
-                {item.name} - Cantidad: {item.quantity}
-                <input
-                  type="number"
-                  value={item.quantity}
-                  min="1"
-                  className="ml-2 w-16 p-1 border rounded"
-                  onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
-                />
-                <button
-                  className="ml-4 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700 transition-colors"
-                  onClick={() => removeFromCart(item.id)}>
-                  Eliminar
+        <div className="w-1/3 h-full bg-gray-800 shadow-lg p-6 overflow-y-auto ml-4 border border-white">
+      <h2 className="text-2xl font-bold mb-4 text-red-600">Carrito</h2>
+      <ul className="list-disc pl-5">
+      {cartItems.map((item) => (
+      <li key={item.id} className="text-lg text-white flex justify-between items-center border-b border-white pb-2 mb-2">
+        {item.name} - Cantidad: {item.quantity}
+        <input
+          type="number"
+          value={item.quantity}
+          min="1"
+          className="ml-2 w-16 p-1 border rounded bg-gray-700 text-white border-white"
+          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+        />
+        <button
+          className="ml-4 px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition-colors border border-white"
+          onClick={() => removeFromCart(item.id)}
+        >
+          Eliminar
                 </button>
               </li>
             ))}
