@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import backgroundImage from '../public/background/no1.jpeg'; //  ajustar la ruta a tu imagen
 
 export default function Header() {
   const [username, setUsername] = useState('');
